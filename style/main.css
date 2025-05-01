@@ -1,0 +1,572 @@
+:root {
+    --bg: #f9f9f9;
+    --text: #222;
+    --card: #fff;
+    --border: #ddd;
+  }
+  
+  body.dark {
+    --bg: #121212;
+    --text: #f0f0f0;
+    --card: #1e1e1e;
+    --border: #333;
+    background: linear-gradient(120deg, #1c1c1c, #2b2b2b);
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: background 0.6s ease, color 0.3s ease;
+  }
+  
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(120deg, #f0f0f0, #e0e0e0);
+    background-size: 400% 400%;
+    animation: fade-bg 15s ease infinite;
+  }
+  
+  @keyframes fade-bg {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  #app {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+
+  }
+  
+  .header-controls {
+    display: flex;
+    gap: 12px;
+  }
+  
+  .header button {
+    padding: 8px 14px;
+    background-color: var(--text);
+    color: var(--bg);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .header button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  
+  .main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  
+  .palette-editor,
+  .palette-preview,
+  .gradient-preview {
+    flex: 1 1 300px;
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    min-height: 280px;
+  }
+  
+  .color-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+  
+  .color-controls input[type="color"] {
+    width: 48px;
+    height: 48px;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+  
+  .color-controls button,
+  #angleInput {
+    padding: 8px 14px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background-color: var(--bg);
+    color: var(--text);
+    cursor: pointer;
+  }
+  
+  .clear-btn {
+    background-color: #e74c3c;
+    color: #fff;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background 0.2s ease;
+  }
+  
+  .clear-btn:hover {
+    background-color: #c0392b;
+  }
+  
+  .clear-btn.small {
+    padding: 6px 12px;
+    font-size: 0.75rem;
+    background-color: var(--border);
+    color: var(--text);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  
+  .clear-btn.small:hover {
+    background-color: #bbb;
+  }
+  
+  .color-list::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .color-list::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 4px;
+  }
+  
+  .color-list::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .preset-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  
+  .preset-color {
+    width: 40px;
+    height: 32px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.1s ease;
+  }
+  
+  .preset-color:hover {
+    transform: scale(1.05);
+  }
+  
+  .preview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .color-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 16px;
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 4px;
+  }
+  
+  .color-entry {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .color-box {
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.1s ease;
+  }
+  
+  .color-box:hover {
+    transform: scale(1.05);
+  }
+  
+  .color-info {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    padding-left: 4px;
+    flex: 1;
+  }
+  
+  .copy-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  
+  .copy-btn {
+    padding: 2px 6px;
+    font-size: 0.75rem;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--border);
+    color: var(--text);
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  
+  .copy-btn:hover {
+    background-color: #999;
+  }
+  
+  .gradient-box {
+    width: 200px;              /* размер превью — можно поменять */
+    height: 200px;
+    border-radius: 50%;        /* делаем кругом */
+    border: 1px solid var(--border);
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+    background-size: cover;    /* чтобы покрыть весь элемент */
+    background-position: center;
+    margin: 0 auto;            /* выровнять по центру */
+  }
+  
+  
+  .layout {
+    display: flex;
+    gap: 16px;
+  }
+  
+  /* Боковая панель с собственным скроллом */
+  .sidebar {
+    width: 260px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px;
+    max-height: calc(100vh - 150px);
+    overflow-y: auto;
+  }
+  
+  .sidebar input[type="text"] {
+    flex: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    font-size: 0.9rem;
+  }
+  
+  .scroll-list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    overflow-y: auto;
+  }
+  
+  /* Немного увеличенные карточки вместо тонких линий */
+  .scroll-list .color-item,
+  .scroll-list .gradient-item {
+    width: 95%; /* ← ограничим ширину */
+    min-height: 32px;
+    padding: 4px 6px;
+    margin: 6px auto; /* центрируем внутри скролла */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    background: transparent;
+    transition: transform 0.25s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    will-change: transform;
+  }
+  
+  .scroll-list .color-item:hover,
+  .scroll-list .gradient-item:hover {
+    transform: scale(1.03);
+    box-shadow:
+      0 0 3px rgba(255, 255, 255, 0.12),
+      0 0 8px rgba(255, 255, 255, 0.2),
+      0 0 12px rgba(255, 255, 255, 0.25);
+    border-color: #fff;
+  }
+  
+  
+  
+  /* Название сверху с динамической обводкой */
+  .color-name {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    font-size: 0.7rem;
+    color: var(--text);
+    text-align: center;
+    padding: 2px;
+    background: rgba(255,255,255,0.5);
+    backdrop-filter: blur(2px);
+    border-bottom: 1px solid var(--border);
+    user-select: none;
+    pointer-events: none;
+    text-shadow:
+       1px  1px 0 #fff,
+      -1px -1px 0 #fff,
+       1px -1px 0 #fff,
+      -1px  1px 0 #fff;
+  }
+  
+  body.dark .color-name {
+    background: rgba(0,0,0,0.5);
+    text-shadow:
+       1px  1px 0 #000,
+      -1px -1px 0 #000,
+       1px -1px 0 #000,
+      -1px  1px 0 #000;
+  }
+  
+  /* Стилизация скроллбара для WebKit-браузеров */
+  .sidebar::-webkit-scrollbar,
+  .scroll-list::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .sidebar::-webkit-scrollbar-thumb,
+  .scroll-list::-webkit-scrollbar-thumb {
+    background-color: var(--border);
+    border-radius: 4px;
+  }
+  
+  .sidebar::-webkit-scrollbar-track,
+  .scroll-list::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  /* Для Firefox */
+  .sidebar,
+  .scroll-list {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+  #drawArea {
+    width: 100%;
+    height: 200px;
+    border: 2px dashed var(--border);
+    border-radius: 8px;
+    background-color: var(--card);
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 0 8px rgba(0,0,0,0.05);
+  }
+  
+  #drawCanvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+    cursor: crosshair;
+  }
+  
+  #clearCanvas {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    background-color: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  #clearCanvas:hover {
+    background-color: var(--card);
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  #drawArea {
+    background-color: var(--bg);
+    resize: both;
+    overflow: hidden;
+    min-width: 300px;
+    min-height: 200px;
+    max-width: 100%;
+    max-height: 90vh;
+  }
+
+  
+/* ==== Иконки внутри кнопок ==== */
+.icon-btn {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+/* ==== Базовые стили для всех иконок-кнопок ==== */
+.button-clean,
+.clear-btn.small {
+  padding: 4px;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+/* ==== Эффект наведения — неоновая обводка ==== */
+.button-clean:hover,
+.clear-btn.small:hover,
+#clearCanvas:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 8px #0ff, 0 0 12px #0ff, 0 0 16px #0ff;
+}
+
+/* ======================= */
+/* ☑️ Общий фон при наведении */
+/* ======================= */
+
+body.dark .button-clean:hover,
+body.dark .clear-btn.small:hover,
+body.dark #clearCanvas:hover {
+  background-color: #2f2f2f !important;
+}
+
+body:not(.dark) .button-clean:hover,
+body:not(.dark) .clear-btn.small:hover,
+body:not(.dark) #clearCanvas:hover {
+  background-color: #c7c1c1 !important;
+}
+
+
+/* ==== Усиление контраста иконок в тёмной теме ==== */
+body.dark .button-clean img,
+body.dark .clear-btn.small img,
+body.dark #clearCanvas img {
+  filter: brightness(1.1) contrast(1.3);
+}
+.header {
+  position: relative;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 24px;
+}
+
+.logo-wrapper {
+  position: fixed; /* ← теперь логотип фиксирован на экране */
+  top: 50px;        /* отступ сверху */
+  left: 50%;
+  transform: translateX(-450%) translateX(150px); /* сдвиг вправо */
+  display: flex;
+  align-items: center;
+  z-index: 1000;    /* чтобы был выше всего */
+}
+
+
+
+
+.site-logo {
+  max-height: clamp(80px, 12vw, 350px); /* 18vw ≈ 200px на обычном экране */
+  height: auto;
+  width: auto;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+  filter: drop-shadow(0 0 10px rgba(255, 100, 0, 0.3));
+  transition: transform 0.3s ease;
+}
+
+
+.site-logo:hover {
+  transform: translateX(-50%) scale(1.05);
+}
+
+.header-controls {
+  position: absolute;
+  right: 24px;
+}
+@media (max-width: 1024px) {
+  .layout {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sidebar {
+    width: 100%;
+    max-height: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+  }
+
+  .scroll-list {
+    max-height: 200px;
+    flex: 1 1 100%;
+    overflow-y: auto;
+  }
+
+  .main {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .palette-editor,
+  .palette-preview,
+  .gradient-preview {
+    width: 100%;
+    flex: none;
+  }
+
+  .logo-wrapper {
+    left: 50%;
+    transform: translateX(-50%);
+    top: 16px;
+  }
+
+  .site-logo {
+    max-height: clamp(60px, 12vw, 180px);
+  }
+}

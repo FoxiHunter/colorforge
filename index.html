@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ColorForge</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style/main.css">
+</head>
+<body>
+  <div id="app">
+    <header class="header">
+      <div class="logo-wrapper">
+        <img src="IMG/Logo.png" alt="ColorForge" class="site-logo">
+      </div>
+      <div class="header-controls">
+        <button id="toggleTheme" class="clear-btn small" title="Сменить тему">
+          <img id="themeIcon" src="IMG/Dark theme.png" alt="Сменить тему" width="24" height="24" class="icon-btn">
+        </button>
+      </div>
+    </header>
+    
+
+    <div class="layout">
+      <aside class="sidebar left">
+        <input type="text" placeholder="Поиск цвета..." id="colorSearch">
+        <div id="colorList" class="scroll-list"></div>
+      </aside>
+
+      <main class="main">
+        <section class="palette-editor"></section>
+        <section class="palette-preview"></section>
+        <section class="gradient-preview"></section>
+
+        <div style="text-align:left; margin: 8px 0;">
+          <button id="clearCanvas" class="clear-btn small" title="Очистить рисовалку">
+            <img src="IMG/Clearing the drawing field.png" class="icon-btn" alt="Очистить рисовалку" width="24" height="24">
+          </button>
+        </div>        
+      </main>
+
+      <aside class="sidebar right">
+        <input type="text" placeholder="Поиск градиента..." id="gradientSearch">
+        <div id="gradientList" class="scroll-list"></div>
+      </aside>
+    </div>
+  </div>
+
+  <script type="module" src="scripts/main.js"></script>
+</body>
+</html>
